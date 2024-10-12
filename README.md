@@ -27,6 +27,9 @@ Flags:
 Use "kreate [command] --help" for more information about a command.
 ```
 
+> [!NOTE]  
+> The code structure and the entire idea is just copied from `kubectl` project.
+
 ## Examples
 
 - Create a PVC resource yaml with PVC name `my-claim`
@@ -69,6 +72,42 @@ spec:
 status: {}
 ```
 
+## Installing `kreate`
+
+`kreate` is not available currently using OS package managers. You will have to install it by
+downloading the released binary from GitHub.
+
+Go to releases page and download the appropriate binary for your operating system and architecture,
+using either curl or wget commands. And move it to your `PATH`.
+
+You can figure out the operating system details using the below command
+
+```
+uname -a
+Darwin vsap-mac-HW32YFVFWC 23.6.0 Darwin Kernel Version 23.6.0: Mon Jul 29 21:14:30 PDT 2024; root:xnu-10063.141.2~1/RELEASE_ARM64_T6030 arm64
+```
+
+### MacOS
+
+- Download, respective binary (artifacts) from releases, you can specify the expected value for the version var
+
+```
+export VERSION=0.0.1
+wget https://github.com/viveksinghggits/kreate/releases/download/v${VERSION}/kreate_Darwin_arm64.tar.gz
+```
+
+- Extract the downloaded .tar.gz file
+
+```
+tar xf akcess_0.0.1_Linux_x86_64.tar.gz
+```
+
+- Move the binary to PATH
+
+```
+mv kreate /usr/local/bin
+```
+
 ## Using with kubectl
 
 Since `kreate` is a standalone binary it can easily be used with kubectl as kubectl plugin.
@@ -99,7 +138,3 @@ status: {}
 ## Supported Resources
 
 - [PersistentVolumeClaim](https://pkg.go.dev/k8s.io/api/core/v1#PersistentVolumeClaim)
-
-
-> [!NOTE]  
-> The code structure and the entire idea is just copied from `kubectl` project.
