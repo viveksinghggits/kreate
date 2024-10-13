@@ -1,12 +1,7 @@
 ## kreate
 
-`kreate` a command line utility that can be used to create the Kubernetes
+`kreate` is a command line utility that can be used to create the Kubernetes
 resources that are not support by `kubectl create` command.
-
-Initially we were planning to just support generating the `yaml` representation
-of the resource using `-oyaml` argument so that it can be changed manually and
-then the resource can be created.
-But eventually settled on just supporting creation as well.
 
 ```bash
 ./kreate --help
@@ -99,7 +94,7 @@ wget https://github.com/viveksinghggits/kreate/releases/download/v${VERSION}/kre
 - Extract the downloaded .tar.gz file
 
 ```
-tar xf akcess_0.0.1_Linux_x86_64.tar.gz
+tar xf kreate_Darwin_arm64.tar.gz
 ```
 
 - Move the binary to PATH
@@ -114,7 +109,8 @@ Since `kreate` is a standalone binary it can easily be used with kubectl as kube
 More about kubectl plugins can be read [here](https://kubernetes.io/docs/tasks/extend-kubectl/kubectl-plugins/).
 
 Download the `kreate` binary for your OS and ARCH and move the binary to the `$PATH` after renaming
-it to `kubectl-kreate`. And that's all, now you can easily use `kreate` with standard `kubectl` tool.
+it to `kubectl-kreate`. And that's all, now you can easily use `kreate` with standard `kubectl` tool
+like shown below.
 
 ```
 kubectl kreate pvc my-claim --size 30 --dry-run=client -oyaml
