@@ -96,7 +96,7 @@ func (o *CreatePVCOptions) Complete(f cmdutil.Factory, cmd *cobra.Command, args 
 }
 
 func (o *CreatePVCOptions) createPVCObject() *corev1.PersistentVolumeClaim {
-	return &corev1.PersistentVolumeClaim{
+	pvc := &corev1.PersistentVolumeClaim{
 		ObjectMeta: metav1.ObjectMeta{
 			Name:      o.Name,
 			Namespace: o.Namespace,
@@ -107,12 +107,17 @@ func (o *CreatePVCOptions) createPVCObject() *corev1.PersistentVolumeClaim {
 					"storage": resource.MustParse(fmt.Sprintf("%sGi", o.Size)),
 				},
 			},
-			StorageClassName: &o.StorageClass,
 			AccessModes: []corev1.PersistentVolumeAccessMode{
 				corev1.ReadWriteOnce,
 			},
 		},
 	}
+
+	if o.StorageClass != "" {
+		pvc.Spec.StorageClassName = &o.StorageClass
+	}
+
+	return pvc
 }
 
 func (o *CreatePVCOptions) Run() error {
