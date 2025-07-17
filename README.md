@@ -133,4 +133,4 @@ status: {}
 
 ## Supported Resources
 
-- [PersistentVolumeClaim](https://pkg.go.dev/k8s.io/api/core/v1#PersistentVolumeClaim)
+- [PersistentVolumeClaim](https://pkg.go.dev/k8s.io/api/core/v1#PersistentVolumeClaim) resource
